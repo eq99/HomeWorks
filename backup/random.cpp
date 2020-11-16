@@ -1,7 +1,20 @@
 #include <random>
 #include <iostream>
+
+#include <cstdlib>
+#include <ctime>
+
+
+int
+random2(int a, int b){
+  if(b==a)return -1; // discard a-b==0
+  if (b<a) std::swap(a,b);
+
+  return (rand()%(b-a) + a); //[a,b)
+}
+
 int // random number [a,b)
-randomRange(int a, int b){
+random1(int a, int b){
   if(b < a)std::swap(a,b); // make sure a<b
 
   std::random_device dev;
@@ -12,6 +25,8 @@ randomRange(int a, int b){
 
 int
 main(){
+
+  srand(time(0));
   for(int i=0; i<20; ++i)
-    std::cout<<randomRange(0,20)<<' ';
+    std::cout<<random2(0,10)<<' ';
 }
