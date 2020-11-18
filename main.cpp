@@ -1,7 +1,14 @@
-#include "./src/test.h"
-#include <string>
+#include "./src/simulatedAnneal.h"
+
 
 int
 main(){
-  printTest( std::string("qiansen!") );
+  int TSP[CITY_NUM][CITY_NUM];
+  initTSP( TSP );
+  printTSP( TSP );
+
+  Answer answer;
+  simulatedAnneal( TSP, answer );
+
+  printAnswer( answer );
 }
